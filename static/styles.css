@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Simplifica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Simplifica'), url('SIMPLIFICA Typeface.woff') format('woff');
+}
+.nav-item{
+    margin-left:5vmin;
+    margin-right:5vmin;
+    font-size:16pt;
+}
+nav a.current {
+    font-weight: 900;
+  }
+nav img{
+    margin-left:1%;
+}
+body{
+    font-family:'Simplifica';
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.image{
+    flex:25%;
+    max-width: 75%;
+}
+.image img{
+    width:100%;
+    margin-left: -100px;
+    margin-top: 50px;
+}
+#mainPic{
+    max-width: 100%;
+}
+.name{
+    font-size:80pt;
+    max-width: 20%;
+    margin-top:80px;
+}
+.personalInfo{
+    font-size: 20pt;
+    position: absolute;
+    margin-left: -30px;
+}
+.personalInfo li{
+    list-style: none;
+}
+.personalInfo li a{
+    color:black;
+}
+
+.column-about {
+    flex: 25%;
+    justify-content: center;
+    max-width: 100%;
+    padding: 0 4px;
+    margin-top: 50px;
+}
