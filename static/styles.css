@@ -30,7 +30,7 @@ body{
 .image img{
     width:100%;
     margin-left: -100px;
-    margin-top: 50px;
+    margin-top: 15%;
 }
 #mainPic{
     max-width: 75%;
