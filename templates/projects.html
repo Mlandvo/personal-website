@@ -4,23 +4,63 @@
 <h1 style="text-align:center; margin-top:100px;">Past and Current Projects</h1>
 
 <div class="container">
-    <div class="item zoom">
-        <img src="static/websiteProject.jpeg"/>
+    <div class="item zoom" onclick="openModal(); currentSlide(1)">
+        <img src="static/websiteProject.jpeg" data-img-index="1"/>
         <p>here is some info about this</p>
     </div>
-    <div class="item zoom">
+    <div class="item zoom" onclick="openModal(); currentSlide(2)">
         <img src="static/face.png"/>
         <p>here is some more info about this</p>
     </div>
-    <div class="item zoom">
+    <div class="item zoom" onclick="openModal(); currentSlide(3)">
         <img src="static/websiteProject.jpeg"/>
         <p>guess what! that's not it, here's even more info coming up and I bet you truly weren't expecting that</p>
     </div>
-    <div class="item zoom">
+    <div class="item zoom" onclick="openModal(); currentSlide(4)">
         <img src="static/websiteProject.jpeg"/>
         <p>no</p>
     </div>
+</div>
+<!-- The Modal/Lightbox Container -->
+<div id="imageModal" class="modal">
+    <!-- Close button -->
+    <span class="close cursor" onclick="closeModal()">&times;</span>
 
+    <!-- Modal Content (Carousel) -->
+    <div class="modal-content">
+        <!-- Individual Slides -->
+        <div class="mySlides">
+            <img src="static/websiteProject.jpeg" alt="Slide 1">
+            <div class="caption-container">
+                <p>here is some info about this</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <img src="static/face.png" alt="Slide 2">
+             <div class="caption-container">
+                <p>here is some more info about this</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <img src="static/websiteProject.jpeg" alt="Slide 3">
+             <div class="caption-container">
+                <p>guess what! that's not it, here's even more info coming up and I bet you truly weren't expecting that</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <img src="static/websiteProject.jpeg" alt="Slide 4">
+             <div class="caption-container">
+                <p>no</p>
+            </div>
+        </div>
+        
+        <!-- Navigation Buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 </div>
 <style>
     .container{
@@ -49,5 +89,135 @@
     .zoom:hover {
     transform: scale(1.35);
     }
+    /* Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        padding-top: 100px; /* Location of the box - top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image + caption) */
+    .modal-content {
+        position: relative;
+        z-index: 1001;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 900px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        z-index: 1001;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Hide the slides by default */
+    .mySlides {
+        display: none;
+        text-align: center;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Caption text */
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    /* You might need to adjust the image within the modal */
+    .modal-content img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 </style>
+<script>
+    var slideIndex = 1;
+
+    //Open Modal on thumbnail click
+    function openModal(){
+        document.getElementById('imageModal').style.display = "block";
+    }
+
+    //Close Modal
+    function closeModal(){
+        document.getElementById('imageModal').style.display = "none";
+    }
+
+    //Advance carousel by x amount
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    //Main function - displays correct slide
+    function showSlides(n){
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+
+        //wrap around logic
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+
+        //Hide all slides
+        for (i = 0; i < sldies.length; i++){
+            slides[i].style.display = "none";
+        }
+
+        //Show all slides
+        slides[slideIndex-1].style.display = "block";
+    }
+    //check output for error
+    console.log("Display for current slide:", slide[slideIndex-1].style.display);
+</script>
 {% endblock %}
